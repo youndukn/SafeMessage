@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FD1C79B118EC059D00595AC1 /* SMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1C79B018EC059D00595AC1 /* SMConstants.m */; };
-		FD1C79B418EC05C200595AC1 /* SMUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1C79B318EC05C200595AC1 /* SMUtility.m */; };
 		FD2061DF18EBF22B0041C177 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2061DE18EBF22B0041C177 /* Foundation.framework */; };
 		FD2061E118EBF22B0041C177 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2061E018EBF22B0041C177 /* CoreGraphics.framework */; };
 		FD2061E318EBF22B0041C177 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2061E218EBF22B0041C177 /* UIKit.framework */; };
@@ -21,17 +19,6 @@
 		FD2061FA18EBF22C0041C177 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2061E218EBF22B0041C177 /* UIKit.framework */; };
 		FD20620218EBF22C0041C177 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD20620018EBF22C0041C177 /* InfoPlist.strings */; };
 		FD20620418EBF22C0041C177 /* SafeMessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD20620318EBF22C0041C177 /* SafeMessageTests.m */; };
-		FD20620E18EBF2410041C177 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD20620D18EBF2410041C177 /* Parse.framework */; };
-		FD20621018EBF2A00041C177 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD20620F18EBF2A00041C177 /* AudioToolbox.framework */; };
-		FD20621218EBF2A70041C177 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD20621118EBF2A70041C177 /* CFNetwork.framework */; };
-		FD20621418EBF2B20041C177 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD20621318EBF2B20041C177 /* CoreLocation.framework */; };
-		FD20621618EBF2B70041C177 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD20621518EBF2B70041C177 /* libz.dylib */; };
-		FD20621818EBF2BE0041C177 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD20621718EBF2BE0041C177 /* MobileCoreServices.framework */; };
-		FD20621A18EBF2C50041C177 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD20621918EBF2C50041C177 /* QuartzCore.framework */; };
-		FD20621C18EBF2CB0041C177 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD20621B18EBF2CB0041C177 /* Security.framework */; };
-		FD20621E18EBF2D30041C177 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD20621D18EBF2D30041C177 /* StoreKit.framework */; };
-		FD20622018EBF2DB0041C177 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD20621F18EBF2DB0041C177 /* SystemConfiguration.framework */; };
-		FD20622318EBF33C0041C177 /* SMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD20622218EBF33C0041C177 /* SMMainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,10 +32,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FD1C79AF18EC059D00595AC1 /* SMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMConstants.h; sourceTree = "<group>"; };
-		FD1C79B018EC059D00595AC1 /* SMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMConstants.m; sourceTree = "<group>"; };
-		FD1C79B218EC05C200595AC1 /* SMUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUtility.h; sourceTree = "<group>"; };
-		FD1C79B318EC05C200595AC1 /* SMUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUtility.m; sourceTree = "<group>"; };
 		FD2061DB18EBF22B0041C177 /* SafeMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD2061DE18EBF22B0041C177 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FD2061E018EBF22B0041C177 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,18 +48,6 @@
 		FD2061FF18EBF22C0041C177 /* SafeMessageTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SafeMessageTests-Info.plist"; sourceTree = "<group>"; };
 		FD20620118EBF22C0041C177 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FD20620318EBF22C0041C177 /* SafeMessageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeMessageTests.m; sourceTree = "<group>"; };
-		FD20620D18EBF2410041C177 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		FD20620F18EBF2A00041C177 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		FD20621118EBF2A70041C177 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		FD20621318EBF2B20041C177 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		FD20621518EBF2B70041C177 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		FD20621718EBF2BE0041C177 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		FD20621918EBF2C50041C177 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		FD20621B18EBF2CB0041C177 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		FD20621D18EBF2D30041C177 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		FD20621F18EBF2DB0041C177 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		FD20622118EBF33C0041C177 /* SMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMainViewController.h; sourceTree = "<group>"; };
-		FD20622218EBF33C0041C177 /* SMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,18 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD20622018EBF2DB0041C177 /* SystemConfiguration.framework in Frameworks */,
-				FD20621E18EBF2D30041C177 /* StoreKit.framework in Frameworks */,
-				FD20621C18EBF2CB0041C177 /* Security.framework in Frameworks */,
-				FD20621A18EBF2C50041C177 /* QuartzCore.framework in Frameworks */,
-				FD20621818EBF2BE0041C177 /* MobileCoreServices.framework in Frameworks */,
-				FD20621618EBF2B70041C177 /* libz.dylib in Frameworks */,
-				FD20621418EBF2B20041C177 /* CoreLocation.framework in Frameworks */,
 				FD2061E118EBF22B0041C177 /* CoreGraphics.framework in Frameworks */,
-				FD20621218EBF2A70041C177 /* CFNetwork.framework in Frameworks */,
-				FD20621018EBF2A00041C177 /* AudioToolbox.framework in Frameworks */,
 				FD2061E318EBF22B0041C177 /* UIKit.framework in Frameworks */,
-				FD20620E18EBF2410041C177 /* Parse.framework in Frameworks */,
 				FD2061DF18EBF22B0041C177 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,16 +96,6 @@
 		FD2061DD18EBF22B0041C177 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FD20621F18EBF2DB0041C177 /* SystemConfiguration.framework */,
-				FD20621D18EBF2D30041C177 /* StoreKit.framework */,
-				FD20621B18EBF2CB0041C177 /* Security.framework */,
-				FD20621918EBF2C50041C177 /* QuartzCore.framework */,
-				FD20621718EBF2BE0041C177 /* MobileCoreServices.framework */,
-				FD20621518EBF2B70041C177 /* libz.dylib */,
-				FD20621318EBF2B20041C177 /* CoreLocation.framework */,
-				FD20621118EBF2A70041C177 /* CFNetwork.framework */,
-				FD20620F18EBF2A00041C177 /* AudioToolbox.framework */,
-				FD20620D18EBF2410041C177 /* Parse.framework */,
 				FD2061DE18EBF22B0041C177 /* Foundation.framework */,
 				FD2061E018EBF22B0041C177 /* CoreGraphics.framework */,
 				FD2061E218EBF22B0041C177 /* UIKit.framework */,
@@ -158,12 +109,6 @@
 			children = (
 				FD2061ED18EBF22B0041C177 /* SMAppDelegate.h */,
 				FD2061EE18EBF22B0041C177 /* SMAppDelegate.m */,
-				FD20622118EBF33C0041C177 /* SMMainViewController.h */,
-				FD20622218EBF33C0041C177 /* SMMainViewController.m */,
-				FD1C79AF18EC059D00595AC1 /* SMConstants.h */,
-				FD1C79B018EC059D00595AC1 /* SMConstants.m */,
-				FD1C79B218EC05C200595AC1 /* SMUtility.h */,
-				FD1C79B318EC05C200595AC1 /* SMUtility.m */,
 				FD2061F018EBF22B0041C177 /* Images.xcassets */,
 				FD2061E518EBF22B0041C177 /* Supporting Files */,
 			);
@@ -295,9 +240,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD1C79B418EC05C200595AC1 /* SMUtility.m in Sources */,
-				FD1C79B118EC059D00595AC1 /* SMConstants.m in Sources */,
-				FD20622318EBF33C0041C177 /* SMMainViewController.m in Sources */,
 				FD2061EF18EBF22B0041C177 /* SMAppDelegate.m in Sources */,
 				FD2061EB18EBF22B0041C177 /* main.m in Sources */,
 			);
@@ -416,10 +358,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafeMessage/SafeMessage-Prefix.pch";
 				INFOPLIST_FILE = "SafeMessage/SafeMessage-Info.plist";
@@ -433,10 +371,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafeMessage/SafeMessage-Prefix.pch";
 				INFOPLIST_FILE = "SafeMessage/SafeMessage-Info.plist";
@@ -504,7 +438,6 @@
 				FD20620918EBF22C0041C177 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		FD20620A18EBF22C0041C177 /* Build configuration list for PBXNativeTarget "SafeMessageTests" */ = {
 			isa = XCConfigurationList;
@@ -513,7 +446,6 @@
 				FD20620C18EBF22C0041C177 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

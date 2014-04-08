@@ -8,12 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import <Parse/Parse.h>
-
-@interface SMAppDelegate : UIResponder <UIApplicationDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@interface SMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property(nonatomic, strong) UINavigationController *navController;
 
 @end
