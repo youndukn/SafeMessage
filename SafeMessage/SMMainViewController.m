@@ -54,7 +54,7 @@ const float buttonHeight = 40.0f;
     //LoginButton
     loginSwitch = [[UISwitch alloc] init];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:loginSwitch];
-
+    
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
     //SafeNumberField
@@ -86,7 +86,7 @@ const float buttonHeight = 40.0f;
         [myNumberString stringByAppendingString:[[SMUtility getSafeNumber] stringValue]];
     }else{
         [loginSwitch setOn:NO];
-        myNumberString = @"번호가 없습니다";
+        myNumberString = @"번호 받기";
     }
     
     [self setMySafeNumber:myNumberString];
@@ -117,6 +117,7 @@ const float buttonHeight = 40.0f;
         [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
         [query countObjectsInBackgroundWithTarget:self selector:@selector(findNextAvailableSafeNumber:error:)];
     }
+    
 }
 
 //Find the next availableSafeNumber
@@ -129,12 +130,12 @@ const float buttonHeight = 40.0f;
     
     int startSafeNumber = [SMUtility getStartSafeNumber:iSMMaxPremiumNumber+numberOfRegistration];
     int endNumber = startSafeNumber*10;
+    
     PFQuery *query = [PFInstallation query];
     [query whereKey:kSMInstallationSafeNumberKey greaterThan:[NSNumber numberWithInt:startSafeNumber]];
     [query whereKey:kSMInstallationSafeNumberKey lessThan:[NSNumber numberWithInt:endNumber]];
     [query orderByAscending:kSMInstallationSafeNumberKey];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
         if([objects count] > 0){
             int currentNumber = [[[objects objectAtIndex:0] objectForKey:kSMInstallationSafeNumberKey] intValue];
             for(int i = 0; i < [objects count]; i++){
@@ -172,6 +173,9 @@ const float buttonHeight = 40.0f;
                     [self createOrEditChannel];
                 }else if(number == 1){
                     //Success
+                    if(self.myNumberButton){
+                        [self setMySafeNumber:[NSString stringWithFormat:@"번호 바꾸기:%d", mySafeNumber]];
+                    }
                 }else{
                     //error
                 }
@@ -193,7 +197,7 @@ const float buttonHeight = 40.0f;
         [myNumberButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
         [myNumberButton setBackgroundColor:[SMUtility changeColor]];
-        [myNumberButton addTarget:self action:@selector(submitMessage) forControlEvents:UIControlEventTouchUpInside];
+        [myNumberButton addTarget:self action:@selector(createOrEditChannel) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:myNumberButton];
     }
     
