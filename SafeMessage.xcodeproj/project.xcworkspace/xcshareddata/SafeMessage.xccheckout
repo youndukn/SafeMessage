@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>81C9CDC9-AE72-4792-A23D-2FCD93527563</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SafeMessage</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>65B6867D-B928-4BA8-A261-BF735E7B0EE6</key>
+		<string>https://github.com/youndukn/SafeMessage.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SafeMessage.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>65B6867D-B928-4BA8-A261-BF735E7B0EE6</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/youndukn/SafeMessage.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>65B6867D-B928-4BA8-A261-BF735E7B0EE6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>65B6867D-B928-4BA8-A261-BF735E7B0EE6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SafeMessage</string>
+		</dict>
+	</array>
+</dict>
+</plist>
