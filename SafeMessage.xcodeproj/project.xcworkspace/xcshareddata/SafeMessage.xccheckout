@@ -5,31 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-<<<<<<< HEAD
-	<string>81C9CDC9-AE72-4792-A23D-2FCD93527563</string>
-=======
-	<string>D82177E4-B5A2-444E-B106-052A73D536BB</string>
->>>>>>> FETCH_HEAD
+	<string>546D23AD-4D0B-419D-85D1-107A81D46229</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SafeMessage</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-<<<<<<< HEAD
 		<key>65B6867D-B928-4BA8-A261-BF735E7B0EE6</key>
-=======
-		<key>EB87B7F6-4A81-4515-A79D-4717E5823DDD</key>
->>>>>>> FETCH_HEAD
 		<string>https://github.com/youndukn/SafeMessage.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SafeMessage.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-<<<<<<< HEAD
 		<key>65B6867D-B928-4BA8-A261-BF735E7B0EE6</key>
-=======
-		<key>EB87B7F6-4A81-4515-A79D-4717E5823DDD</key>
->>>>>>> FETCH_HEAD
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -37,22 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-<<<<<<< HEAD
 	<string>65B6867D-B928-4BA8-A261-BF735E7B0EE6</string>
-=======
-	<string>EB87B7F6-4A81-4515-A79D-4717E5823DDD</string>
->>>>>>> FETCH_HEAD
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-<<<<<<< HEAD
 			<string>65B6867D-B928-4BA8-A261-BF735E7B0EE6</string>
-=======
-			<string>EB87B7F6-4A81-4515-A79D-4717E5823DDD</string>
->>>>>>> FETCH_HEAD
 			<key>IDESourceControlWCCName</key>
 			<string>SafeMessage</string>
 		</dict>

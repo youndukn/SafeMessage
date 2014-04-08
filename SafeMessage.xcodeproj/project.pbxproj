@@ -32,6 +32,10 @@
 		FD20621E18EBF2D30041C177 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD20621D18EBF2D30041C177 /* StoreKit.framework */; };
 		FD20622018EBF2DB0041C177 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD20621F18EBF2DB0041C177 /* SystemConfiguration.framework */; };
 		FD20622318EBF33C0041C177 /* SMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD20622218EBF33C0041C177 /* SMMainViewController.m */; };
+		FDBA378E18F3C82200018308 /* SMLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBA378D18F3C82200018308 /* SMLogInViewController.m */; };
+		FDBA379C18F3D72900018308 /* SMKeyboardHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBA379B18F3D72900018308 /* SMKeyboardHandler.m */; };
+		FDBA379F18F3DDA500018308 /* image_loginfield.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBA379D18F3DDA500018308 /* image_loginfield.png */; };
+		FDBA37A018F3DDA500018308 /* image_loginfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBA379E18F3DDA500018308 /* image_loginfield@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +81,12 @@
 		FD20621F18EBF2DB0041C177 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FD20622118EBF33C0041C177 /* SMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMainViewController.h; sourceTree = "<group>"; };
 		FD20622218EBF33C0041C177 /* SMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMainViewController.m; sourceTree = "<group>"; };
+		FDBA378C18F3C82200018308 /* SMLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLogInViewController.h; sourceTree = "<group>"; };
+		FDBA378D18F3C82200018308 /* SMLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLogInViewController.m; sourceTree = "<group>"; };
+		FDBA379A18F3D72900018308 /* SMKeyboardHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMKeyboardHandler.h; sourceTree = "<group>"; };
+		FDBA379B18F3D72900018308 /* SMKeyboardHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMKeyboardHandler.m; sourceTree = "<group>"; };
+		FDBA379D18F3DDA500018308 /* image_loginfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_loginfield.png; sourceTree = "<group>"; };
+		FDBA379E18F3DDA500018308 /* image_loginfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_loginfield@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,12 +168,16 @@
 			children = (
 				FD2061ED18EBF22B0041C177 /* SMAppDelegate.h */,
 				FD2061EE18EBF22B0041C177 /* SMAppDelegate.m */,
+				FDBA378C18F3C82200018308 /* SMLogInViewController.h */,
+				FDBA378D18F3C82200018308 /* SMLogInViewController.m */,
 				FD20622118EBF33C0041C177 /* SMMainViewController.h */,
 				FD20622218EBF33C0041C177 /* SMMainViewController.m */,
 				FD1C79AF18EC059D00595AC1 /* SMConstants.h */,
 				FD1C79B018EC059D00595AC1 /* SMConstants.m */,
 				FD1C79B218EC05C200595AC1 /* SMUtility.h */,
 				FD1C79B318EC05C200595AC1 /* SMUtility.m */,
+				FDBA379A18F3D72900018308 /* SMKeyboardHandler.h */,
+				FDBA379B18F3D72900018308 /* SMKeyboardHandler.m */,
 				FD2061F018EBF22B0041C177 /* Images.xcassets */,
 				FD2061E518EBF22B0041C177 /* Supporting Files */,
 			);
@@ -173,6 +187,8 @@
 		FD2061E518EBF22B0041C177 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FDBA379D18F3DDA500018308 /* image_loginfield.png */,
+				FDBA379E18F3DDA500018308 /* image_loginfield@2x.png */,
 				FD2061E618EBF22B0041C177 /* SafeMessage-Info.plist */,
 				FD2061E718EBF22B0041C177 /* InfoPlist.strings */,
 				FD2061EA18EBF22B0041C177 /* main.m */,
@@ -277,6 +293,8 @@
 			files = (
 				FD2061E918EBF22B0041C177 /* InfoPlist.strings in Resources */,
 				FD2061F118EBF22B0041C177 /* Images.xcassets in Resources */,
+				FDBA379F18F3DDA500018308 /* image_loginfield.png in Resources */,
+				FDBA37A018F3DDA500018308 /* image_loginfield@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,8 +314,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD1C79B418EC05C200595AC1 /* SMUtility.m in Sources */,
+				FDBA379C18F3D72900018308 /* SMKeyboardHandler.m in Sources */,
 				FD1C79B118EC059D00595AC1 /* SMConstants.m in Sources */,
 				FD20622318EBF33C0041C177 /* SMMainViewController.m in Sources */,
+				FDBA378E18F3C82200018308 /* SMLogInViewController.m in Sources */,
 				FD2061EF18EBF22B0041C177 /* SMAppDelegate.m in Sources */,
 				FD2061EB18EBF22B0041C177 /* main.m in Sources */,
 			);

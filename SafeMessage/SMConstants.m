@@ -17,8 +17,10 @@ float const fSMSafeNumberEmptyPercent = 0.25;
 
 #pragma mark - Installation Class
 
+NSString *const kSMUserSafeNumberKey = @"safeNumber";
+
+#pragma mark - Installation Class
 
 NSString *const kSMInstallationChannelsKey = @"channels";
-NSString *const kSMInstallationSafeNumberKey = @"safeNumber";
 
 @end

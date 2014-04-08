@@ -19,8 +19,11 @@ extern float const fSMSafeNumberEmptyPercent;
 
 #pragma mark - Installation Class
 
+extern NSString *const kSMUserSafeNumberKey;
+
+#pragma mark - Installation Class
+
 extern NSString *const kSMInstallationChannelsKey;
-extern NSString *const kSMInstallationSafeNumberKey;
 
 
 @end

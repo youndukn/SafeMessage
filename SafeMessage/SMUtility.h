@@ -12,7 +12,10 @@
 
 //Color
 + (UIColor *)submitColor;
++ (UIColor *)submitPColor;
 + (UIColor *)changeColor;
++ (UIColor *)changePColor;
++ (UIImage *)imageWithColor:(UIColor *)color;
 
 //SafeNumber
 + (NSString *)getChannelString;

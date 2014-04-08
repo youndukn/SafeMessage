@@ -12,6 +12,7 @@
 
 #import "SMAppDelegate.h"
 
+#import "SMAppDelegate.h"
 #import "SMConstants.h"
 #import "SMUtility.h"
 
@@ -45,6 +46,11 @@ const float buttonHeight = 40.0f;
 {
     [super viewDidLoad];
     
+    if(![PFUser currentUser]){
+        [(SMAppDelegate *)[[UIApplication sharedApplication] delegate] presentLoginViewControllerAnimated:NO];
+        return;
+    }
+    
     self.view.backgroundColor = [UIColor whiteColor];
 
     //Set Navigation Items
@@ -53,7 +59,21 @@ const float buttonHeight = 40.0f;
     
     //LoginButton
     loginSwitch = [[UISwitch alloc] init];
+    [loginSwitch addTarget:self action:@selector(setState:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:loginSwitch];
+    
+    //Change Button
+    NSString *myNumberString = @"번호 바꾸기:";
+    
+    if([PFUser currentUser]){
+        [loginSwitch setOn:YES];
+        //[myNumberString stringByAppendingString:[[SMUtility getSafeNumber] stringValue]];
+    }else{
+        [loginSwitch setOn:NO];
+        //myNumberString = @"번호 받기";
+    }
+    
+    [self setMySafeNumber:myNumberString];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
@@ -78,18 +98,7 @@ const float buttonHeight = 40.0f;
     [submitButton addTarget:self action:@selector(submitMessage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:submitButton];
     
-    //Change Button
-    NSString *myNumberString = @"번호 바꾸기:";
-    
-    if([SMUtility getChannelString]){
-        [loginSwitch setOn:YES];
-        [myNumberString stringByAppendingString:[[SMUtility getSafeNumber] stringValue]];
-    }else{
-        [loginSwitch setOn:NO];
-        myNumberString = @"번호 받기";
-    }
-    
-    [self setMySafeNumber:myNumberString];
+
     
 }
 
@@ -99,93 +108,24 @@ const float buttonHeight = 40.0f;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setState:(id)sender{
+    if([sender isOn]){
+        
+    }else{
+        PFUser *user = [PFUser currentUser];
+        [user setUsername:@"hello"];
+        [user saveInBackground];
+    }
+}
+
 - (void)submitMessage{
     if([safeNumberField.text length] > 0){
         
     }
 }
 
-//Create or Edit Channel based on your channel Status
-- (void)createOrEditChannel{
-    
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    NSNumber *mySafeNumber = [currentInstallation objectForKey:kSMInstallationSafeNumberKey];
-    if(mySafeNumber){
-        [self findNextAvailableSafeNumber:[mySafeNumber intValue] error:nil];
-    }else{
-        PFQuery *query = [PFInstallation query];
-        [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
-        [query countObjectsInBackgroundWithTarget:self selector:@selector(findNextAvailableSafeNumber:error:)];
-    }
-    
-}
 
-//Find the next availableSafeNumber
-- (void)findNextAvailableSafeNumber:(int)numberOfRegistration error:(NSError *)error{
-    
-    if(error){
-       //Error
-        return;
-    }
-    
-    int startSafeNumber = [SMUtility getStartSafeNumber:iSMMaxPremiumNumber+numberOfRegistration];
-    int endNumber = startSafeNumber*10;
-    
-    PFQuery *query = [PFInstallation query];
-    [query whereKey:kSMInstallationSafeNumberKey greaterThan:[NSNumber numberWithInt:startSafeNumber]];
-    [query whereKey:kSMInstallationSafeNumberKey lessThan:[NSNumber numberWithInt:endNumber]];
-    [query orderByAscending:kSMInstallationSafeNumberKey];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if([objects count] > 0){
-            int currentNumber = [[[objects objectAtIndex:0] objectForKey:kSMInstallationSafeNumberKey] intValue];
-            for(int i = 0; i < [objects count]; i++){
-                if([[[objects objectAtIndex:i] objectForKey:kSMInstallationSafeNumberKey] intValue] != currentNumber){
-                    break;
-                }
-                currentNumber+=1;
-            }
-            [self verifyAndSetChannel:currentNumber];
-        }else{
-            //error
-        }
-    }];
 
-}
-
-//Key Process
-- (void)verifyAndSetChannel:(int)mySafeNumber{
-    
-    NSString *channelName = [NSString stringWithFormat:@"user_%d", mySafeNumber];
-
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    
-    [currentInstallation setObject:@[@""] forKey:kSMInstallationChannelsKey];
-    [currentInstallation setChannels:[NSArray arrayWithObject:channelName]];
-    [currentInstallation setObject:[NSNumber numberWithInt:mySafeNumber] forKey:kSMInstallationSafeNumberKey];
-    [currentInstallation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if(succeeded){
-            PFQuery *query = [PFInstallation query];
-            [query whereKey:kSMInstallationSafeNumberKey equalTo:[[PFInstallation currentInstallation] objectForKey:kSMInstallationSafeNumberKey]];
-            [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
-                if(number > 1){
-                    //What happen if there is more than three always error
-                    [currentInstallation setObject:@[@""] forKey:kSMInstallationChannelsKey];
-                    [self createOrEditChannel];
-                }else if(number == 1){
-                    //Success
-                    if(self.myNumberButton){
-                        [self setMySafeNumber:[NSString stringWithFormat:@"번호 바꾸기:%d", mySafeNumber]];
-                    }
-                }else{
-                    //error
-                }
-            }];
-        }
-    }];
-    PFQuery *query = [PFInstallation query];
-    [query whereKey:kSMInstallationSafeNumberKey equalTo:[NSNumber numberWithInt:mySafeNumber]];
-    
-}
 
 - (void)setMySafeNumber:(NSString *)numberString{
     CGRect screenRect = [[UIScreen mainScreen] bounds];
