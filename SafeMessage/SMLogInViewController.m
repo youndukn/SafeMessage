@@ -17,6 +17,7 @@
     SMKeyboardHandler *keyboard;
 }
 @property (nonatomic, strong) UIImageView *fieldsBackground;
+@property (nonatomic, strong) UIImageView *logo;
 @property (nonatomic, strong) UITextField *usernameField;
 @property (nonatomic, strong) UITextField *passwordField;
 @property (nonatomic, strong) UIButton *logInButton;
@@ -26,6 +27,9 @@
 @implementation SMLogInViewController
 
 @synthesize fieldsBackground;
+@synthesize logo;
+@synthesize usernameField;
+@synthesize passwordField;
 @synthesize logInButton;
 @synthesize signUpButton;
 
@@ -50,8 +54,10 @@
     
     
     //[self.logInView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"main_background.png"]]];
-    [self.view setBackgroundColor:[UIColor colorWithRed:25/255.0f green:25/255.0f blue:112/255.0f alpha:1]];
-    //[self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]]];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    //[self.view setBackgroundColor:[UIColor colorWithRed:25/255.0f green:25/255.0f blue:112/255.0f alpha:1]];
+    [self setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]]];
+    [self.view addSubview:logo];
     
     // Set field text color
     self.fieldsBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"image_loginfield.png"]];
@@ -77,16 +83,16 @@
     
     // Set buttons appearance
     self.logInButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.logInButton setImage:[SMUtility imageWithColor:[SMUtility submitColor]] forState:UIControlStateNormal];
-    [self.logInButton setImage:[SMUtility imageWithColor:[SMUtility submitPColor]] forState:UIControlStateHighlighted];
+    [self.logInButton setBackgroundImage:[SMUtility imageWithColor:[SMUtility submitColor]] forState:UIControlStateNormal];
+    [self.logInButton setBackgroundImage:[SMUtility imageWithColor:[SMUtility submitPColor]] forState:UIControlStateHighlighted];
     [self.logInButton setTitle:@"로그인" forState:UIControlStateNormal];
     [self.logInButton setTitle:@"로그인" forState:UIControlStateHighlighted];
     [self.logInButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.logInButton];
     
     self.signUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.signUpButton setImage:[SMUtility imageWithColor:[SMUtility changeColor]] forState:UIControlStateNormal];
-    [self.signUpButton setImage:[SMUtility imageWithColor:[SMUtility changePColor]] forState:UIControlStateHighlighted];
+    [self.signUpButton setBackgroundImage:[SMUtility imageWithColor:[SMUtility changeColor]] forState:UIControlStateNormal];
+    [self.signUpButton setBackgroundImage:[SMUtility imageWithColor:[SMUtility changePColor]] forState:UIControlStateHighlighted];
     [self.signUpButton setTitle:@"가입" forState:UIControlStateNormal];
     [self.signUpButton setTitle:@"가입" forState:UIControlStateHighlighted];
     [self.signUpButton addTarget:self action:@selector(signUpAction) forControlEvents:UIControlEventTouchUpInside];
@@ -136,13 +142,14 @@
     [super viewDidLayoutSubviews];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    
+    float inset = 35.0f;
     // Set frame for elements
-    [self.fieldsBackground setFrame:CGRectMake(35.0f, screenRect.size.height-230.0f, 250.0f, 100.0f)];
-    [self.usernameField setFrame:CGRectMake(35.0f, screenRect.size.height-230.0f, 250.0f, 50.0f)];
-    [self.passwordField setFrame:CGRectMake(35.0f, screenRect.size.height-180.0f, 250.0f, 50.0f)];
-    [self.logInButton setFrame:CGRectMake(35.0f, screenRect.size.height-120.0f, 250.0f, 40.0f)];
-    [self.signUpButton setFrame:CGRectMake(35.0f, screenRect.size.height-70.0f, 250.0f, 40.0f)];
+    [self.logo setFrame:CGRectMake(screenRect.size.width/2-logo.image.size.width/4, 50.0f, logo.image.size.width/2, logo.image.size.height/2)];
+    [self.fieldsBackground setFrame:CGRectMake(inset, screenRect.size.height-230.0f, screenRect.size.width-inset*2, 100.0f)];
+    [self.usernameField setFrame:CGRectMake(inset, screenRect.size.height-230.0f, screenRect.size.width-inset*2, 50.0f)];
+    [self.passwordField setFrame:CGRectMake(inset, screenRect.size.height-180.0f, screenRect.size.width-inset*2, 50.0f)];
+    [self.logInButton setFrame:CGRectMake(inset, screenRect.size.height-120.0f, screenRect.size.width-inset*2, 40.0f)];
+    [self.signUpButton setFrame:CGRectMake(inset, screenRect.size.height-70.0f, screenRect.size.width-inset*2, 40.0f)];
     
 }
 

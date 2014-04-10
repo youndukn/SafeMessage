@@ -14,6 +14,7 @@
 
 @implementation SMUtility
 
+//Color
 + (UIColor *)submitColor{
     return [UIColor colorWithRed:112/255.0f  green:204/255.0f blue:131/255.0f alpha:1];
 }
@@ -45,6 +46,8 @@
     return image;
 }
 
+
+//SafeNumber
 + (NSString *)getChannelString{
     if([PFInstallation currentInstallation].channels){
         return[[PFInstallation currentInstallation].channels objectAtIndex:0];

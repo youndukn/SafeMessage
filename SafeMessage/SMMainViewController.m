@@ -112,9 +112,7 @@ const float buttonHeight = 40.0f;
     if([sender isOn]){
         
     }else{
-        PFUser *user = [PFUser currentUser];
-        [user setUsername:@"hello"];
-        [user saveInBackground];
+        [(SMAppDelegate *)[[UIApplication sharedApplication] delegate] logOut];
     }
 }
 

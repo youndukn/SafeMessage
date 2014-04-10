@@ -36,6 +36,7 @@
 		FDBA379C18F3D72900018308 /* SMKeyboardHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBA379B18F3D72900018308 /* SMKeyboardHandler.m */; };
 		FDBA379F18F3DDA500018308 /* image_loginfield.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBA379D18F3DDA500018308 /* image_loginfield.png */; };
 		FDBA37A018F3DDA500018308 /* image_loginfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBA379E18F3DDA500018308 /* image_loginfield@2x.png */; };
+		FDD41DBE18F61061008B62FD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FDD41DBD18F61061008B62FD /* logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		FDBA379B18F3D72900018308 /* SMKeyboardHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMKeyboardHandler.m; sourceTree = "<group>"; };
 		FDBA379D18F3DDA500018308 /* image_loginfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_loginfield.png; sourceTree = "<group>"; };
 		FDBA379E18F3DDA500018308 /* image_loginfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_loginfield@2x.png"; sourceTree = "<group>"; };
+		FDD41DBD18F61061008B62FD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 		FD2061E518EBF22B0041C177 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FDD41DBD18F61061008B62FD /* logo.png */,
 				FDBA379D18F3DDA500018308 /* image_loginfield.png */,
 				FDBA379E18F3DDA500018308 /* image_loginfield@2x.png */,
 				FD2061E618EBF22B0041C177 /* SafeMessage-Info.plist */,
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD2061E918EBF22B0041C177 /* InfoPlist.strings in Resources */,
+				FDD41DBE18F61061008B62FD /* logo.png in Resources */,
 				FD2061F118EBF22B0041C177 /* Images.xcassets in Resources */,
 				FDBA379F18F3DDA500018308 /* image_loginfield.png in Resources */,
 				FDBA37A018F3DDA500018308 /* image_loginfield@2x.png in Resources */,
