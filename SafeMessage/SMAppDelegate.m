@@ -134,29 +134,31 @@
 - (void)verifyAndSetChannel:(int)mySafeNumber{
     
     PFUser *user = [PFUser currentUser];
-    [user setObject:[NSNumber numberWithInt:mySafeNumber] forKey:kSMUserSafeNumberKey];
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if(succeeded){
-            PFQuery *query = [PFUser query];
-            [query whereKey:kSMUserSafeNumberKey equalTo:[[PFUser currentUser] objectForKey:kSMUserSafeNumberKey]];
-            [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
-                if(number > 1){
-                    //What happen if there is more than three always error
-                    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-                    [currentInstallation setObject:@[@""] forKey:kSMInstallationChannelsKey];
-                    [self createOrEditChannel];
-                }else if(number == 1){
-                    //Success
-                    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-                    NSString *channelName = [NSString stringWithFormat:@"user_%d", [[[PFUser currentUser] objectForKey:kSMUserSafeNumberKey] intValue]];
-                    [currentInstallation setChannels:@[@""]];
-                    [currentInstallation setChannels:[NSArray arrayWithObject:channelName]];
-                }else{
-                    //error
-                }
-            }];
-        }
-    }];
+    
+    if(user){
+        [user setUsername:[NSString stringWithFormat:@"%d",mySafeNumber]];
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+            if([error code] == kPFErrorUsernameTaken){
+                //error
+                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                [currentInstallation setObject:@[@""] forKey:kSMInstallationChannelsKey];
+                [self createOrEditChannel];
+            }if(error){
+               //
+            }else{
+                //Success
+                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                PFUser *currentUser = [PFUser currentUser];
+                [currentUser setObject:[NSNumber numberWithInt:[[currentUser username] intValue]] forKey:kSMUserSafeNumberKey];
+                NSString *channelName = [NSString stringWithFormat:@"user_%@", currentUser];
+                [currentInstallation setChannels:[NSArray arrayWithObject:channelName]];
+            }
+            
+        }];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:SMLoginConrollerUsernameFoundNotification object:[NSNumber numberWithInt:mySafeNumber]];
+    }
     
 }
 

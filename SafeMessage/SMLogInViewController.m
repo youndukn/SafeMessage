@@ -13,6 +13,8 @@
 #import "SMKeyboardHandler.h"
 #import "SMKeyboardHandler.h"
 
+#import "SMConstants.h"
+
 @interface SMLogInViewController (){
     SMKeyboardHandler *keyboard;
 }
@@ -45,6 +47,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //Notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(usernameRecieved:) name:SMLoginConrollerUsernameFoundNotification object:nil];
     
     keyboard = [[SMKeyboardHandler alloc] init];
     keyboard.delegate = self;
@@ -98,6 +102,11 @@
     [self.signUpButton addTarget:self action:@selector(signUpAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.signUpButton];
     
+    [];
+    
+}
+
+- (void)usernameIsRecieved{
     
 }
 

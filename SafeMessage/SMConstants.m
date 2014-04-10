@@ -23,4 +23,9 @@ NSString *const kSMUserSafeNumberKey = @"safeNumber";
 
 NSString *const kSMInstallationChannelsKey = @"channels";
 
+#pragma mark - Notifications
+
+NSString *const SMLoginConrollerUsernameFoundNotification           = @"com.parse.SafeMessage.loginController.didRecieveUsernameNotification";
+
+
 @end

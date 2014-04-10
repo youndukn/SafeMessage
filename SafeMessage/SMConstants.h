@@ -25,5 +25,8 @@ extern NSString *const kSMUserSafeNumberKey;
 
 extern NSString *const kSMInstallationChannelsKey;
 
+#pragma mark - Notifications
+
+extern NSString *const SMLoginConrollerUsernameFoundNotification;
 
 @end

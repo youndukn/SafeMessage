@@ -62,6 +62,7 @@
     return nil;
 }
 
+//Logic Error
 + (int)getStartSafeNumber:(int)numberOfUsers{
     int i=1;
     do {
