@@ -10,8 +10,11 @@
 
 #import "SMUtility.h"
 
+#import "SMAppDelegate.h"
+
 #import "SMKeyboardHandler.h"
 #import "SMKeyboardHandler.h"
+#import "MBProgressHUD.h"
 
 #import "SMConstants.h"
 
@@ -73,6 +76,7 @@
     self.usernameField.textAlignment = NSTextAlignmentCenter;
     self.usernameField.tag = 0;
     self.usernameField.delegate = self;
+    self.usernameField.enabled = NO;
     [self.view addSubview:self.usernameField];
     
     self.passwordField = [[UITextField alloc] init];
@@ -102,11 +106,19 @@
     [self.signUpButton addTarget:self action:@selector(signUpAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.signUpButton];
     
-    [];
-    
+    [(SMAppDelegate *)[[UIApplication sharedApplication] delegate] createOrEditChannel];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"안전번호 찾는중";
+    hud.dimBackground = YES;
 }
 
-- (void)usernameIsRecieved{
+- (void)usernameRecieved:(NSNotification *) notification{
+    
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
+    if(self.usernameField){
+        usernameField.text = [[[notification userInfo] objectForKey:kSMUserSafeNumberKey] stringValue];
+    }
     
 }
 
@@ -114,16 +126,23 @@
     if([self.usernameField.text length] == 0 || [self.passwordField.text length] == 0 ){
         return;
     }
-    [PFUser logInWithUsernameInBackground:self.usernameField.text password:self.passwordField.text
-                                    block:^(PFUser *user, NSError *error) {
-                                        if (user) {
-                                            [self.delegate loginViewController:self didLogInUser:user];
-                                        } else {
-                                            NSString *errorString = [[error userInfo] objectForKey:@"error"];
-                                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"로그인할 수 없습니다" message:errorString delegate:self cancelButtonTitle:nil otherButtonTitles:@"확인",nil];
-                                            [alert show];
-                                        }
-                                    }];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [hud setLabelText:@"로그인중"];
+    [hud setDimBackground:YES];
+    
+    [PFUser
+     logInWithUsernameInBackground:self.usernameField.text
+     password:self.passwordField.text
+     block:^(PFUser *user, NSError *error) {
+        if (user) {
+            [self.delegate loginViewController:self didLogInUser:user];
+        } else {
+            NSString *errorString = [[error userInfo] objectForKey:@"error"];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"로그인할 수 없습니다" message:errorString delegate:self cancelButtonTitle:nil otherButtonTitles:@"확인",nil];
+            [alert show];
+        }
+    }];
 }
 
 - (void)signUpAction{
@@ -135,9 +154,16 @@
     user.username = self.usernameField.text;
     user.password = self.passwordField.text;
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [hud setLabelText:@"가입중"];
+    [hud setDimBackground:YES];
+    
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
-            [self.delegate loginViewController:self didSignUpUser:user];
+            [user setValue:[NSNumber numberWithInt:[[[PFUser currentUser] username] intValue]] forKey:kSMUserSafeNumberKey];
+            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [self.delegate loginViewController:self didSignUpUser:user];
+            }];
         } else {
             NSString *errorString = [[error userInfo] objectForKey:@"error"];
             // Show the errorString somewhere and let the user try again.

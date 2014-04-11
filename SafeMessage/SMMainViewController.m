@@ -62,18 +62,7 @@ const float buttonHeight = 40.0f;
     [loginSwitch addTarget:self action:@selector(setState:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:loginSwitch];
     
-    //Change Button
-    NSString *myNumberString = @"번호 바꾸기:";
-    
-    if([PFUser currentUser]){
-        [loginSwitch setOn:YES];
-        //[myNumberString stringByAppendingString:[[SMUtility getSafeNumber] stringValue]];
-    }else{
-        [loginSwitch setOn:NO];
-        //myNumberString = @"번호 받기";
-    }
-    
-    [self setMySafeNumber:myNumberString];
+
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
@@ -97,9 +86,25 @@ const float buttonHeight = 40.0f;
     [submitButton setBackgroundColor:[SMUtility submitColor]];
     [submitButton addTarget:self action:@selector(submitMessage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:submitButton];
-    
 
+}
+
+
+- (void)viewDidAppear:(BOOL)animated{
+    //Change Button
+    NSString *myNumberString = @"번호 바꾸기:";
     
+    if([PFUser currentUser]){
+        [loginSwitch setOn:YES];
+        if([[SMUtility getSafeNumber] stringValue]){
+            [myNumberString stringByAppendingString:[[SMUtility getSafeNumber] stringValue]];
+        }
+    }else{
+        [loginSwitch setOn:NO];
+        myNumberString = @"번호 받기";
+    }
+    
+    [self setMySafeNumber:myNumberString];
 }
 
 - (void)didReceiveMemoryWarning

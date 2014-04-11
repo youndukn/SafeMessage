@@ -56,7 +56,7 @@
 }
 
 + (NSNumber *)getSafeNumber{
-    NSNumber *mySafeNumber = [[PFInstallation currentInstallation] valueForKey:kSMUserSafeNumberKey];
+    NSNumber *mySafeNumber = [[PFUser currentUser] valueForKey:kSMUserSafeNumberKey];
     if(mySafeNumber)
         return mySafeNumber;
     return nil;
@@ -67,7 +67,7 @@
     int i=1;
     do {
         i*=10;
-    } while (numberOfUsers/i*(1.0f/(1.0f-fSMSafeNumberEmptyPercent))<10.0f);
+    } while (numberOfUsers/i*(1.0f/(1.0f-fSMSafeNumberEmptyPercent))>=10.0f);
     return i;
 }
 

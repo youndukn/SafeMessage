@@ -36,6 +36,7 @@
 		FDBA379C18F3D72900018308 /* SMKeyboardHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBA379B18F3D72900018308 /* SMKeyboardHandler.m */; };
 		FDBA379F18F3DDA500018308 /* image_loginfield.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBA379D18F3DDA500018308 /* image_loginfield.png */; };
 		FDBA37A018F3DDA500018308 /* image_loginfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBA379E18F3DDA500018308 /* image_loginfield@2x.png */; };
+		FDCC9F1918F78C3100D232CF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FDCC9F1818F78C3100D232CF /* MBProgressHUD.m */; };
 		FDD41DBE18F61061008B62FD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FDD41DBD18F61061008B62FD /* logo.png */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,8 @@
 		FDBA379B18F3D72900018308 /* SMKeyboardHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMKeyboardHandler.m; sourceTree = "<group>"; };
 		FDBA379D18F3DDA500018308 /* image_loginfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_loginfield.png; sourceTree = "<group>"; };
 		FDBA379E18F3DDA500018308 /* image_loginfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_loginfield@2x.png"; sourceTree = "<group>"; };
+		FDCC9F1718F78C3100D232CF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		FDCC9F1818F78C3100D232CF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FDD41DBD18F61061008B62FD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +183,8 @@
 				FD1C79B318EC05C200595AC1 /* SMUtility.m */,
 				FDBA379A18F3D72900018308 /* SMKeyboardHandler.h */,
 				FDBA379B18F3D72900018308 /* SMKeyboardHandler.m */,
+				FDCC9F1718F78C3100D232CF /* MBProgressHUD.h */,
+				FDCC9F1818F78C3100D232CF /* MBProgressHUD.m */,
 				FD2061F018EBF22B0041C177 /* Images.xcassets */,
 				FD2061E518EBF22B0041C177 /* Supporting Files */,
 			);
@@ -324,6 +329,7 @@
 				FDBA378E18F3C82200018308 /* SMLogInViewController.m in Sources */,
 				FD2061EF18EBF22B0041C177 /* SMAppDelegate.m in Sources */,
 				FD2061EB18EBF22B0041C177 /* main.m in Sources */,
+				FDCC9F1918F78C3100D232CF /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,8 @@
 #import "SMMainViewController.h"
 #import "SMLoginViewController.h"
 
+#import "MBProgressHUD.h"
+
 #import "SMConstants.h"
 #import "SMUtility.h"
 
@@ -99,30 +101,21 @@
         return;
     }
     
+    NSLog(@"%d",iSMMaxPremiumNumber);
     int startSafeNumber = [SMUtility getStartSafeNumber:iSMMaxPremiumNumber+numberOfRegistration];
     int endSafeNumber = startSafeNumber*10;
     
+    int randomFromTo = startSafeNumber + arc4random() % (endSafeNumber-startSafeNumber);
+    
     PFQuery *query = [PFUser query];
-    [query whereKey:kSMUserSafeNumberKey greaterThan:[NSNumber numberWithInt:startSafeNumber]];
-    [query whereKey:kSMUserSafeNumberKey lessThan:[NSNumber numberWithInt:endSafeNumber]];
-    [query orderByAscending:kSMUserSafeNumberKey];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
-        if([users count] > 0){
-            int currentNumber = -1;
-            bool isSelected = NO;
-            while(!isSelected){
-                int randomFromTo = arc4random() % (int)([users count]/1.2);
-                int currentNumber =  randomFromTo;
-                for(int i = randomFromTo; i < [users count]; i++){
-                    if([[[users objectAtIndex:i] objectForKey:kSMUserSafeNumberKey] intValue] != currentNumber){
-                        isSelected = YES;
-                        break;
-                    }
-                    currentNumber+=1;
-                }
+    [query whereKey:kSMUserSafeNumberKey equalTo:[NSNumber numberWithInt:randomFromTo]];
+    [query countObjectsInBackgroundWithBlock:^(int numbUsers, NSError *error) {
+        if(!error){
+            if(numbUsers == 0 && !error){
+                [self verifyAndSetChannel:startSafeNumber];
+            }else{
+                [self findNextAvailableSafeNumber:numberOfRegistration error:error];
             }
-            if(currentNumber != -1)
-                [self verifyAndSetChannel:currentNumber];
         }else{
             //error
         }
@@ -157,7 +150,14 @@
             
         }];
     }else{
-        [[NSNotificationCenter defaultCenter] postNotificationName:SMLoginConrollerUsernameFoundNotification object:[NSNumber numberWithInt:mySafeNumber]];
+        
+        NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [NSNumber numberWithInt:mySafeNumber],
+                              kSMUserSafeNumberKey,
+                              nil];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:SMLoginConrollerUsernameFoundNotification object:self userInfo:userInfo];
+        
     }
     
 }
@@ -171,11 +171,13 @@
 }
 
 - (void)loginViewController:(SMLogInViewController *)loginViewController didLogInUser:(PFUser *)user{
+    [MBProgressHUD hideAllHUDsForView:loginViewController.view animated:YES];
+    [self.navController dismissViewControllerAnimated:YES completion:nil];
     
 }
 
 - (void)loginViewController:(SMLogInViewController *)loginViewController didSignUpUser:(PFUser *)user{
-    
+    [self loginViewController:loginViewController didLogInUser:user];
 }
 
 
