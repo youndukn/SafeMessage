@@ -15,9 +15,16 @@
 int const iSMMaxPremiumNumber = 9999;
 float const fSMSafeNumberEmptyPercent = 0.25;
 
-#pragma mark - Installation Class
+#pragma mark - User Class
 
+NSString *const kSMUserUsernameKey = @"username";
 NSString *const kSMUserSafeNumberKey = @"safeNumber";
+NSString *const kSMUserFixedMessagesKey = @"fixedMessages";
+
+#pragma mark - FixedMessages Class
+
+NSString *const kSMFixedMessagesClassKey = @"FixedMessage";
+NSString *const kSMFixedMessagesUserKey = @"user";
 
 #pragma mark - Installation Class
 
@@ -25,7 +32,10 @@ NSString *const kSMInstallationChannelsKey = @"channels";
 
 #pragma mark - Notifications
 
-NSString *const SMLoginConrollerUsernameFoundNotification           = @"com.parse.SafeMessage.loginController.didRecieveUsernameNotification";
+NSString *const kSMLoginConrollerUsernameFoundNotification           = @"com.parse.SafeMessage.loginController.didRecieveUsernameNotification";
 
+#pragma mark - NSDefault
+
+NSString *const kSMNSUserDefaultPreviousUserKey = @"previousUser";
 
 @end

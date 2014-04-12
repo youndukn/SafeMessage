@@ -51,7 +51,7 @@
 {
     [super viewDidLoad];
     //Notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(usernameRecieved:) name:SMLoginConrollerUsernameFoundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(usernameRecieved:) name:kSMLoginConrollerUsernameFoundNotification object:nil];
     
     keyboard = [[SMKeyboardHandler alloc] init];
     keyboard.delegate = self;
@@ -62,8 +62,8 @@
     
     //[self.logInView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"main_background.png"]]];
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    //[self.view setBackgroundColor:[UIColor colorWithRed:25/255.0f green:25/255.0f blue:112/255.0f alpha:1]];
-    [self setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]]];
+    //[self.view setBackgroundColor:[UIColor colorWithRed:0/255.0f green:11/255.0f blue:61/255.0f alpha:1]];
+    [self setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logoWhite.png"]]];
     [self.view addSubview:logo];
     
     // Set field text color
@@ -135,9 +135,10 @@
      logInWithUsernameInBackground:self.usernameField.text
      password:self.passwordField.text
      block:^(PFUser *user, NSError *error) {
-        if (user) {
+         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+         if (user) {
             [self.delegate loginViewController:self didLogInUser:user];
-        } else {
+         }else{
             NSString *errorString = [[error userInfo] objectForKey:@"error"];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"로그인할 수 없습니다" message:errorString delegate:self cancelButtonTitle:nil otherButtonTitles:@"확인",nil];
             [alert show];
@@ -159,11 +160,18 @@
     [hud setDimBackground:YES];
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (!error) {
             [user setValue:[NSNumber numberWithInt:[[[PFUser currentUser] username] intValue]] forKey:kSMUserSafeNumberKey];
             [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 [self.delegate loginViewController:self didSignUpUser:user];
             }];
+        }else if([error code] == kPFErrorUsernameTaken){
+            //error
+            // Show the errorString somewhere and let the user try again.
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"번호 다시받기" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"다시받기",nil];
+            alert.tag = 1;
+            [alert show];
         } else {
             NSString *errorString = [[error userInfo] objectForKey:@"error"];
             // Show the errorString somewhere and let the user try again.
@@ -179,13 +187,40 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     float inset = 35.0f;
     // Set frame for elements
-    [self.logo setFrame:CGRectMake(screenRect.size.width/2-logo.image.size.width/4, 50.0f, logo.image.size.width/2, logo.image.size.height/2)];
-    [self.fieldsBackground setFrame:CGRectMake(inset, screenRect.size.height-230.0f, screenRect.size.width-inset*2, 100.0f)];
-    [self.usernameField setFrame:CGRectMake(inset, screenRect.size.height-230.0f, screenRect.size.width-inset*2, 50.0f)];
-    [self.passwordField setFrame:CGRectMake(inset, screenRect.size.height-180.0f, screenRect.size.width-inset*2, 50.0f)];
-    [self.logInButton setFrame:CGRectMake(inset, screenRect.size.height-120.0f, screenRect.size.width-inset*2, 40.0f)];
-    [self.signUpButton setFrame:CGRectMake(inset, screenRect.size.height-70.0f, screenRect.size.width-inset*2, 40.0f)];
     
+   
+    [self.logo setFrame:CGRectMake(screenRect.size.width/2-logo.image.size.width/2, 80.0f, logo.image.size.width, logo.image.size.height)];
+    [self.fieldsBackground setFrame:CGRectMake(inset, screenRect.size.height-200.0f, screenRect.size.width-inset*2, 100.0f)];
+    
+    NSArray *fieldRectArray = [SMUtility getFramesWithColumns:1 Row:2 Width:screenRect.size.width Height:100.0f SideRL:inset MiddleRL:0.0f SideTB:0.0f MiddleTB:0.0f];
+    
+    CGRect usernameRect = [[fieldRectArray objectAtIndex:0] CGRectValue];
+    usernameRect.origin.y+= screenRect.size.height-200.0f;
+    [self.usernameField setFrame:usernameRect];
+    
+    CGRect passwordRect = [[fieldRectArray objectAtIndex:1] CGRectValue];
+    passwordRect.origin.y+= screenRect.size.height-200.0f;
+    [self.passwordField setFrame:passwordRect];
+
+    NSArray *buttonRectArray = [SMUtility getFramesWithColumns:2 Row:1 Width:screenRect.size.width Height:70.0f SideRL:inset MiddleRL:10.0f SideTB:10.0f MiddleTB:10.0f];
+    
+    CGRect loginRect = [[buttonRectArray objectAtIndex:0] CGRectValue];
+    loginRect.origin.y+= screenRect.size.height-100.0f;
+    [self.logInButton setFrame:loginRect];
+    
+    CGRect signupRect = [[buttonRectArray objectAtIndex:1] CGRectValue];
+    signupRect.origin.y+= screenRect.size.height-100.0f;
+    [self.signUpButton setFrame:signupRect];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(alertView.tag == 1){
+        [(SMAppDelegate *)[[UIApplication sharedApplication] delegate] createOrEditChannel];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"안전번호 찾는중";
+        hud.dimBackground = YES;
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

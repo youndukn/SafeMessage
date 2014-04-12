@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD17047518F8D94F0009C8F4 /* logoBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = FD17047418F8D94F0009C8F4 /* logoBlue.png */; };
+		FD17047718F8D9DA0009C8F4 /* logoWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = FD17047618F8D9DA0009C8F4 /* logoWhite.png */; };
+		FD17047A18F8DE660009C8F4 /* SMProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD17047918F8DE660009C8F4 /* SMProfileViewController.m */; };
+		FD17047D18F8E1FA0009C8F4 /* icon_cog_deselected.png in Resources */ = {isa = PBXBuildFile; fileRef = FD17047B18F8E1FA0009C8F4 /* icon_cog_deselected.png */; };
+		FD17047E18F8E1FA0009C8F4 /* icon_cog_deselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD17047C18F8E1FA0009C8F4 /* icon_cog_deselected@2x.png */; };
 		FD1C79B118EC059D00595AC1 /* SMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1C79B018EC059D00595AC1 /* SMConstants.m */; };
 		FD1C79B418EC05C200595AC1 /* SMUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1C79B318EC05C200595AC1 /* SMUtility.m */; };
 		FD2061DF18EBF22B0041C177 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2061DE18EBF22B0041C177 /* Foundation.framework */; };
@@ -37,7 +42,6 @@
 		FDBA379F18F3DDA500018308 /* image_loginfield.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBA379D18F3DDA500018308 /* image_loginfield.png */; };
 		FDBA37A018F3DDA500018308 /* image_loginfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBA379E18F3DDA500018308 /* image_loginfield@2x.png */; };
 		FDCC9F1918F78C3100D232CF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FDCC9F1818F78C3100D232CF /* MBProgressHUD.m */; };
-		FDD41DBE18F61061008B62FD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FDD41DBD18F61061008B62FD /* logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD17047418F8D94F0009C8F4 /* logoBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoBlue.png; sourceTree = "<group>"; };
+		FD17047618F8D9DA0009C8F4 /* logoWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoWhite.png; sourceTree = "<group>"; };
+		FD17047818F8DE660009C8F4 /* SMProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProfileViewController.h; sourceTree = "<group>"; };
+		FD17047918F8DE660009C8F4 /* SMProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMProfileViewController.m; sourceTree = "<group>"; };
+		FD17047B18F8E1FA0009C8F4 /* icon_cog_deselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_cog_deselected.png; sourceTree = "<group>"; };
+		FD17047C18F8E1FA0009C8F4 /* icon_cog_deselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_cog_deselected@2x.png"; sourceTree = "<group>"; };
 		FD1C79AF18EC059D00595AC1 /* SMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMConstants.h; sourceTree = "<group>"; };
 		FD1C79B018EC059D00595AC1 /* SMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMConstants.m; sourceTree = "<group>"; };
 		FD1C79B218EC05C200595AC1 /* SMUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUtility.h; sourceTree = "<group>"; };
@@ -91,7 +101,6 @@
 		FDBA379E18F3DDA500018308 /* image_loginfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_loginfield@2x.png"; sourceTree = "<group>"; };
 		FDCC9F1718F78C3100D232CF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		FDCC9F1818F78C3100D232CF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		FDD41DBD18F61061008B62FD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +186,8 @@
 				FDBA378D18F3C82200018308 /* SMLogInViewController.m */,
 				FD20622118EBF33C0041C177 /* SMMainViewController.h */,
 				FD20622218EBF33C0041C177 /* SMMainViewController.m */,
+				FD17047818F8DE660009C8F4 /* SMProfileViewController.h */,
+				FD17047918F8DE660009C8F4 /* SMProfileViewController.m */,
 				FD1C79AF18EC059D00595AC1 /* SMConstants.h */,
 				FD1C79B018EC059D00595AC1 /* SMConstants.m */,
 				FD1C79B218EC05C200595AC1 /* SMUtility.h */,
@@ -194,7 +205,10 @@
 		FD2061E518EBF22B0041C177 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FDD41DBD18F61061008B62FD /* logo.png */,
+				FD17047B18F8E1FA0009C8F4 /* icon_cog_deselected.png */,
+				FD17047C18F8E1FA0009C8F4 /* icon_cog_deselected@2x.png */,
+				FD17047418F8D94F0009C8F4 /* logoBlue.png */,
+				FD17047618F8D9DA0009C8F4 /* logoWhite.png */,
 				FDBA379D18F3DDA500018308 /* image_loginfield.png */,
 				FDBA379E18F3DDA500018308 /* image_loginfield@2x.png */,
 				FD2061E618EBF22B0041C177 /* SafeMessage-Info.plist */,
@@ -300,9 +314,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD2061E918EBF22B0041C177 /* InfoPlist.strings in Resources */,
-				FDD41DBE18F61061008B62FD /* logo.png in Resources */,
+				FD17047E18F8E1FA0009C8F4 /* icon_cog_deselected@2x.png in Resources */,
 				FD2061F118EBF22B0041C177 /* Images.xcassets in Resources */,
+				FD17047D18F8E1FA0009C8F4 /* icon_cog_deselected.png in Resources */,
+				FD17047718F8D9DA0009C8F4 /* logoWhite.png in Resources */,
 				FDBA379F18F3DDA500018308 /* image_loginfield.png in Resources */,
+				FD17047518F8D94F0009C8F4 /* logoBlue.png in Resources */,
 				FDBA37A018F3DDA500018308 /* image_loginfield@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +347,7 @@
 				FD2061EF18EBF22B0041C177 /* SMAppDelegate.m in Sources */,
 				FD2061EB18EBF22B0041C177 /* main.m in Sources */,
 				FDCC9F1918F78C3100D232CF /* MBProgressHUD.m in Sources */,
+				FD17047A18F8DE660009C8F4 /* SMProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

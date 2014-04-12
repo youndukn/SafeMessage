@@ -13,8 +13,6 @@
 #import "SMMainViewController.h"
 #import "SMLoginViewController.h"
 
-#import "MBProgressHUD.h"
-
 #import "SMConstants.h"
 #import "SMUtility.h"
 
@@ -112,7 +110,7 @@
     [query countObjectsInBackgroundWithBlock:^(int numbUsers, NSError *error) {
         if(!error){
             if(numbUsers == 0 && !error){
-                [self verifyAndSetChannel:startSafeNumber];
+                [self verifyAndSetChannel:randomFromTo];
             }else{
                 [self findNextAvailableSafeNumber:numberOfRegistration error:error];
             }
@@ -156,7 +154,7 @@
                               kSMUserSafeNumberKey,
                               nil];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:SMLoginConrollerUsernameFoundNotification object:self userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kSMLoginConrollerUsernameFoundNotification object:self userInfo:userInfo];
         
     }
     
@@ -171,7 +169,6 @@
 }
 
 - (void)loginViewController:(SMLogInViewController *)loginViewController didLogInUser:(PFUser *)user{
-    [MBProgressHUD hideAllHUDsForView:loginViewController.view animated:YES];
     [self.navController dismissViewControllerAnimated:YES completion:nil];
     
 }

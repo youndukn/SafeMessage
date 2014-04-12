@@ -23,5 +23,9 @@
 
 //Utility
 + (int)getStartSafeNumber:(int)numberOfUsers;
++ (NSArray *)getFramesWithColumns:(int)columns Row:(int)rows
+             Width:(float)width Height:(float)height
+            SideRL:(float)sideRL MiddleRL:(float)middleRL
+            SideTB:(float)sideTB MiddleTB:(float)middleTB;
 
 @end

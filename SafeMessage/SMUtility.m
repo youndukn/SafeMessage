@@ -71,4 +71,26 @@
     return i;
 }
 
++ (NSArray *)getFramesWithColumns:(int)columns Row:(int)rows
+             Width:(float)width Height:(float)height
+            SideRL:(float)sideRL MiddleRL:(float)middleRL
+            SideTB:(float)sideTB MiddleTB:(float)middleTB {
+    
+    float eWidth  = (width-(sideRL*2+middleRL*(columns-1)))/columns;
+    float eHeight = (height-(sideTB*2+middleTB*(rows-1)))/rows;
+    
+    NSMutableArray *rectArray = [[NSMutableArray alloc] initWithCapacity:columns*rows];
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < columns; j++){
+            
+            float originX = j*eWidth+sideRL+middleRL*j;
+            float originY = i*eHeight+sideTB+middleTB*i;
+            
+            CGRect frame = CGRectMake(originX, originY, eWidth,eHeight);
+            [rectArray addObject:[NSValue valueWithCGRect:frame]];
+        }
+    }
+    return rectArray;
+}
+
 @end

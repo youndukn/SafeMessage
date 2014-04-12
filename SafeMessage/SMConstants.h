@@ -17,9 +17,16 @@ extern int const iSMMaxPremiumNumber;
 //Percent Decider
 extern float const fSMSafeNumberEmptyPercent;
 
-#pragma mark - Installation Class
+#pragma mark - User Class
 
+extern NSString *const kSMUserUsernameKey;
 extern NSString *const kSMUserSafeNumberKey;
+extern NSString *const kSMUserFixedMessagesKey;
+
+#pragma mark - FixedMessages Class
+
+extern NSString *const kSMFixedMessagesClassKey;
+extern NSString *const kSMFixedMessagesUserKey;
 
 #pragma mark - Installation Class
 
@@ -27,6 +34,11 @@ extern NSString *const kSMInstallationChannelsKey;
 
 #pragma mark - Notifications
 
-extern NSString *const SMLoginConrollerUsernameFoundNotification;
+extern NSString *const kSMLoginConrollerUsernameFoundNotification;
+
+#pragma mark - NSUserDefault
+
+extern NSString *const kSMNSUserDefaultPreviousUserKey;
+
 
 @end
