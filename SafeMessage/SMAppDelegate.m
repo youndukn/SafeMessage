@@ -10,7 +10,7 @@
 
 #import <Parse/Parse.h>
 
-#import "SMMainViewController.h"
+#import "SMMessagesViewController.h"
 #import "SMLoginViewController.h"
 
 #import "SMConstants.h"
@@ -18,7 +18,7 @@
 
 @interface SMAppDelegate(){
 }
-@property (nonatomic, strong) SMMainViewController *mainViewController;
+@property (nonatomic, strong) SMMessagesViewController *mainViewController;
 
 @end
 
@@ -38,7 +38,9 @@
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
     
-    self.mainViewController = [[SMMainViewController alloc] init];
+    [self setupAppearance];
+    
+    self.mainViewController = [[SMMessagesViewController alloc] init];
     
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
     
@@ -76,89 +78,21 @@
 }
 
 
-//Create or Edit Channel based on your channel Status
-- (void)createOrEditChannel{
+- (void)setupAppearance {
+    // Navigation bar appearance (background and title)
+    [[UINavigationBar appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [SMUtility gTitleColor], NSForegroundColorAttributeName,
+      [UIFont fontWithName:@"FontNAme" size:20.0f], NSFontAttributeName, nil]];
     
-    PFUser *user = [PFUser currentUser];
-    NSString *mySafeNumber = [user username];
-    if(mySafeNumber){
-        [self findNextAvailableSafeNumber:[mySafeNumber intValue] error:nil];
-    }else{
-        PFQuery *query = [PFUser query];
-        [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
-        [query countObjectsInBackgroundWithTarget:self selector:@selector(findNextAvailableSafeNumber:error:)];
-    }
+    [[UINavigationBar appearance] setBarTintColor:[SMUtility gBackgroundColor]];
+    [[UIBarButtonItem appearance] setTintColor:[SMUtility gTitleColor]];
+    [[UINavigationBar appearance] setTintColor:[SMUtility gTitleColor]];
     
-}
-
-//Find the next availableSafeNumber
-- (void)findNextAvailableSafeNumber:(int)numberOfRegistration error:(NSError *)error{
-    
-    if(error){
-        //Error
-        return;
-    }
-    
-    NSLog(@"%d",iSMMaxPremiumNumber);
-    int startSafeNumber = [SMUtility getStartSafeNumber:iSMMaxPremiumNumber+numberOfRegistration];
-    int endSafeNumber = startSafeNumber*10;
-    
-    int randomFromTo = startSafeNumber + arc4random() % (endSafeNumber-startSafeNumber);
-    
-    PFQuery *query = [PFUser query];
-    [query whereKey:kSMUserSafeNumberKey equalTo:[NSNumber numberWithInt:randomFromTo]];
-    [query countObjectsInBackgroundWithBlock:^(int numbUsers, NSError *error) {
-        if(!error){
-            if(numbUsers == 0 && !error){
-                [self verifyAndSetChannel:randomFromTo];
-            }else{
-                [self findNextAvailableSafeNumber:numberOfRegistration error:error];
-            }
-        }else{
-            //error
-        }
-    }];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
     
 }
 
-//Key Process
-- (void)verifyAndSetChannel:(int)mySafeNumber{
-    
-    PFUser *user = [PFUser currentUser];
-    
-    if(user){
-        [user setUsername:[NSString stringWithFormat:@"%d",mySafeNumber]];
-        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            
-            if([error code] == kPFErrorUsernameTaken){
-                //error
-                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-                [currentInstallation setObject:@[@""] forKey:kSMInstallationChannelsKey];
-                [self createOrEditChannel];
-            }if(error){
-               //
-            }else{
-                //Success
-                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-                PFUser *currentUser = [PFUser currentUser];
-                [currentUser setObject:[NSNumber numberWithInt:[[currentUser username] intValue]] forKey:kSMUserSafeNumberKey];
-                NSString *channelName = [NSString stringWithFormat:@"user_%@", currentUser];
-                [currentInstallation setChannels:[NSArray arrayWithObject:channelName]];
-            }
-            
-        }];
-    }else{
-        
-        NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSNumber numberWithInt:mySafeNumber],
-                              kSMUserSafeNumberKey,
-                              nil];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:kSMLoginConrollerUsernameFoundNotification object:self userInfo:userInfo];
-        
-    }
-    
-}
 
 
 - (void)presentLoginViewControllerAnimated:(BOOL)animated {
@@ -206,6 +140,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation saveInBackground];
+    
 }
 
 - (void)application:(UIApplication *)application

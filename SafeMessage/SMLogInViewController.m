@@ -38,6 +38,8 @@
 @synthesize logInButton;
 @synthesize signUpButton;
 
+const int iSMMinPassword = 4;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -50,9 +52,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //Notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(usernameRecieved:) name:kSMLoginConrollerUsernameFoundNotification object:nil];
-    
+
     keyboard = [[SMKeyboardHandler alloc] init];
     keyboard.delegate = self;
     
@@ -76,7 +76,6 @@
     self.usernameField.textAlignment = NSTextAlignmentCenter;
     self.usernameField.tag = 0;
     self.usernameField.delegate = self;
-    self.usernameField.enabled = NO;
     [self.view addSubview:self.usernameField];
     
     self.passwordField = [[UITextField alloc] init];
@@ -91,25 +90,21 @@
     
     // Set buttons appearance
     self.logInButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.logInButton setBackgroundImage:[SMUtility imageWithColor:[SMUtility submitColor]] forState:UIControlStateNormal];
-    [self.logInButton setBackgroundImage:[SMUtility imageWithColor:[SMUtility submitPColor]] forState:UIControlStateHighlighted];
-    [self.logInButton setTitle:@"로그인" forState:UIControlStateNormal];
-    [self.logInButton setTitle:@"로그인" forState:UIControlStateHighlighted];
+    [self.logInButton setBackgroundImage:[SMUtility imageWithColor:[SMUtility gSubmitColor]] forState:UIControlStateNormal];
+    [self.logInButton setBackgroundImage:[SMUtility imageWithColor:[SMUtility gSubmitPColor]] forState:UIControlStateHighlighted];
+    [self.logInButton setTitle:@"Login" forState:UIControlStateNormal];
+    [self.logInButton setTitle:@"Login" forState:UIControlStateHighlighted];
     [self.logInButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.logInButton];
     
     self.signUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.signUpButton setBackgroundImage:[SMUtility imageWithColor:[SMUtility changeColor]] forState:UIControlStateNormal];
-    [self.signUpButton setBackgroundImage:[SMUtility imageWithColor:[SMUtility changePColor]] forState:UIControlStateHighlighted];
-    [self.signUpButton setTitle:@"가입" forState:UIControlStateNormal];
-    [self.signUpButton setTitle:@"가입" forState:UIControlStateHighlighted];
+    [self.signUpButton setBackgroundImage:[SMUtility imageWithColor:[SMUtility gChangeColor]] forState:UIControlStateNormal];
+    [self.signUpButton setBackgroundImage:[SMUtility imageWithColor:[SMUtility gChangePColor]] forState:UIControlStateHighlighted];
+    [self.signUpButton setTitle:@"SignUp" forState:UIControlStateNormal];
+    [self.signUpButton setTitle:@"SignUp" forState:UIControlStateHighlighted];
     [self.signUpButton addTarget:self action:@selector(signUpAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.signUpButton];
     
-    [(SMAppDelegate *)[[UIApplication sharedApplication] delegate] createOrEditChannel];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"안전번호 찾는중";
-    hud.dimBackground = YES;
 }
 
 - (void)usernameRecieved:(NSNotification *) notification{
@@ -123,12 +118,19 @@
 }
 
 - (void)loginAction{
-    if([self.usernameField.text length] == 0 || [self.passwordField.text length] == 0 ){
+    if([self.usernameField.text length] == 0 ){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Username Not Present" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Confirm",nil];
+        [alert show];
+        return;
+    }
+    if([self.passwordField.text length] <= iSMMinPassword ){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Minimum Password Length %d",iSMMinPassword-1] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Confirm",nil];
+        [alert show];
         return;
     }
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [hud setLabelText:@"로그인중"];
+    [hud setLabelText:@"Logining"];
     [hud setDimBackground:YES];
     
     [PFUser
@@ -140,7 +142,7 @@
             [self.delegate loginViewController:self didLogInUser:user];
          }else{
             NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"로그인할 수 없습니다" message:errorString delegate:self cancelButtonTitle:nil otherButtonTitles:@"확인",nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Unsuccessful" message:errorString delegate:self cancelButtonTitle:nil otherButtonTitles:@"확인",nil];
             [alert show];
         }
     }];
@@ -148,15 +150,24 @@
 
 - (void)signUpAction{
     
-    if([self.usernameField.text length] == 0 || [self.passwordField.text length] == 0){
+    if([self.usernameField.text length] <= 2){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Premium Character Number" message:@"More Than 3 Characters" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Confirm",nil];
+        [alert show];
         return;
     }
+    
+    if( [self.passwordField.text length] < iSMMinPassword){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Minimum Password Length %d",iSMMinPassword-1] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Confirm",nil];
+        [alert show];
+        return;
+    }
+    
     PFUser *user = [PFUser user];
     user.username = self.usernameField.text;
     user.password = self.passwordField.text;
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [hud setLabelText:@"가입중"];
+    [hud setLabelText:@"Signuping"];
     [hud setDimBackground:YES];
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -169,13 +180,12 @@
         }else if([error code] == kPFErrorUsernameTaken){
             //error
             // Show the errorString somewhere and let the user try again.
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"번호 다시받기" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"다시받기",nil];
-            alert.tag = 1;
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Username is Taken" message:nil delegate:self cancelButtonTitle:@"Confirm" otherButtonTitles:nil];
             [alert show];
         } else {
             NSString *errorString = [[error userInfo] objectForKey:@"error"];
             // Show the errorString somewhere and let the user try again.
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"가입 할수 없습니다" message:errorString delegate:self cancelButtonTitle:@"돌아가기" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Signup Unsuccessful" message:errorString delegate:self cancelButtonTitle:@"Confirm" otherButtonTitles:nil];
             [alert show];
         }
     }];
@@ -212,15 +222,6 @@
     signupRect.origin.y+= screenRect.size.height-100.0f;
     [self.signUpButton setFrame:signupRect];
     
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(alertView.tag == 1){
-        [(SMAppDelegate *)[[UIApplication sharedApplication] delegate] createOrEditChannel];
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"안전번호 찾는중";
-        hud.dimBackground = YES;
-    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

@@ -8,5 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SMMainViewController : UIViewController <UITextFieldDelegate>
+@interface SMMainViewController : UITableViewController
+{
+
+@protected
+    UITextField *safeNumberField;
+    NSArray *messages;
+    UIScrollView *messageHolderView;
+    
+}
+
+@property (nonatomic, strong) UITextField *safeNumberField;
+@property (nonatomic, strong) NSArray *messages;
+@property (nonatomic, strong) UIScrollView *messageHolderView;
+
+- (void)setMessageButtons;
+- (void)messagesButtonPressed:(id)sender;
+
 @end

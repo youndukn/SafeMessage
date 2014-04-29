@@ -17,7 +17,6 @@
 @property(nonatomic, strong) UINavigationController *navController;
 
 - (void)presentLoginViewControllerAnimated:(BOOL)animated;
-- (void)createOrEditChannel;
 - (void)logOut;
 
 @end

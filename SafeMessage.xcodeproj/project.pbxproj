@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD140EC5190AC84D0053BB50 /* SMMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD140EC4190AC84D0053BB50 /* SMMessagesViewController.m */; };
+		FD140ECE190B18440053BB50 /* SMMyFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD140ECD190B18440053BB50 /* SMMyFriendsViewController.m */; };
 		FD17047518F8D94F0009C8F4 /* logoBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = FD17047418F8D94F0009C8F4 /* logoBlue.png */; };
 		FD17047718F8D9DA0009C8F4 /* logoWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = FD17047618F8D9DA0009C8F4 /* logoWhite.png */; };
 		FD17047A18F8DE660009C8F4 /* SMProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD17047918F8DE660009C8F4 /* SMProfileViewController.m */; };
@@ -55,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD140EC3190AC84D0053BB50 /* SMMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMessagesViewController.h; sourceTree = "<group>"; };
+		FD140EC4190AC84D0053BB50 /* SMMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMessagesViewController.m; sourceTree = "<group>"; };
+		FD140ECC190B18440053BB50 /* SMMyFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMyFriendsViewController.h; sourceTree = "<group>"; };
+		FD140ECD190B18440053BB50 /* SMMyFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMyFriendsViewController.m; sourceTree = "<group>"; };
 		FD17047418F8D94F0009C8F4 /* logoBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoBlue.png; sourceTree = "<group>"; };
 		FD17047618F8D9DA0009C8F4 /* logoWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoWhite.png; sourceTree = "<group>"; };
 		FD17047818F8DE660009C8F4 /* SMProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProfileViewController.h; sourceTree = "<group>"; };
@@ -137,6 +143,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD140ECF190B18A10053BB50 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FD20622118EBF33C0041C177 /* SMMainViewController.h */,
+				FD20622218EBF33C0041C177 /* SMMainViewController.m */,
+				FD140ECC190B18440053BB50 /* SMMyFriendsViewController.h */,
+				FD140ECD190B18440053BB50 /* SMMyFriendsViewController.m */,
+				FD140EC3190AC84D0053BB50 /* SMMessagesViewController.h */,
+				FD140EC4190AC84D0053BB50 /* SMMessagesViewController.m */,
+				FD17047818F8DE660009C8F4 /* SMProfileViewController.h */,
+				FD17047918F8DE660009C8F4 /* SMProfileViewController.m */,
+			);
+			name = MainViewController;
+			sourceTree = "<group>";
+		};
+		FD140ED0190B18C00053BB50 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FDBA378C18F3C82200018308 /* SMLogInViewController.h */,
+				FDBA378D18F3C82200018308 /* SMLogInViewController.m */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		FD140ED1190B18CF0053BB50 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FD140ED0190B18C00053BB50 /* LoginViewController */,
+				FD140ECF190B18A10053BB50 /* MainViewController */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FD140ED2190B18F40053BB50 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				FD2061ED18EBF22B0041C177 /* SMAppDelegate.h */,
+				FD2061EE18EBF22B0041C177 /* SMAppDelegate.m */,
+				FD1C79AF18EC059D00595AC1 /* SMConstants.h */,
+				FD1C79B018EC059D00595AC1 /* SMConstants.m */,
+				FD1C79B218EC05C200595AC1 /* SMUtility.h */,
+				FD1C79B318EC05C200595AC1 /* SMUtility.m */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		FD140ED3190B19090053BB50 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				FDBA379A18F3D72900018308 /* SMKeyboardHandler.h */,
+				FDBA379B18F3D72900018308 /* SMKeyboardHandler.m */,
+				FDCC9F1718F78C3100D232CF /* MBProgressHUD.h */,
+				FDCC9F1818F78C3100D232CF /* MBProgressHUD.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		FD140ED4190B19240053BB50 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		FD2061D218EBF22B0041C177 = {
 			isa = PBXGroup;
 			children = (
@@ -180,22 +250,10 @@
 		FD2061E418EBF22B0041C177 /* SafeMessage */ = {
 			isa = PBXGroup;
 			children = (
-				FD2061ED18EBF22B0041C177 /* SMAppDelegate.h */,
-				FD2061EE18EBF22B0041C177 /* SMAppDelegate.m */,
-				FDBA378C18F3C82200018308 /* SMLogInViewController.h */,
-				FDBA378D18F3C82200018308 /* SMLogInViewController.m */,
-				FD20622118EBF33C0041C177 /* SMMainViewController.h */,
-				FD20622218EBF33C0041C177 /* SMMainViewController.m */,
-				FD17047818F8DE660009C8F4 /* SMProfileViewController.h */,
-				FD17047918F8DE660009C8F4 /* SMProfileViewController.m */,
-				FD1C79AF18EC059D00595AC1 /* SMConstants.h */,
-				FD1C79B018EC059D00595AC1 /* SMConstants.m */,
-				FD1C79B218EC05C200595AC1 /* SMUtility.h */,
-				FD1C79B318EC05C200595AC1 /* SMUtility.m */,
-				FDBA379A18F3D72900018308 /* SMKeyboardHandler.h */,
-				FDBA379B18F3D72900018308 /* SMKeyboardHandler.m */,
-				FDCC9F1718F78C3100D232CF /* MBProgressHUD.h */,
-				FDCC9F1818F78C3100D232CF /* MBProgressHUD.m */,
+				FD140ED4190B19240053BB50 /* Views */,
+				FD140ED1190B18CF0053BB50 /* ViewControllers */,
+				FD140ED2190B18F40053BB50 /* Delegates */,
+				FD140ED3190B19090053BB50 /* Utility */,
 				FD2061F018EBF22B0041C177 /* Images.xcassets */,
 				FD2061E518EBF22B0041C177 /* Supporting Files */,
 			);
@@ -343,6 +401,8 @@
 				FDBA379C18F3D72900018308 /* SMKeyboardHandler.m in Sources */,
 				FD1C79B118EC059D00595AC1 /* SMConstants.m in Sources */,
 				FD20622318EBF33C0041C177 /* SMMainViewController.m in Sources */,
+				FD140ECE190B18440053BB50 /* SMMyFriendsViewController.m in Sources */,
+				FD140EC5190AC84D0053BB50 /* SMMessagesViewController.m in Sources */,
 				FDBA378E18F3C82200018308 /* SMLogInViewController.m in Sources */,
 				FD2061EF18EBF22B0041C177 /* SMAppDelegate.m in Sources */,
 				FD2061EB18EBF22B0041C177 /* main.m in Sources */,

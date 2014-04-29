@@ -8,6 +8,6 @@
 
 #import "SMMainViewController.h"
 
-@interface SMProfileViewController : UIViewController
+@interface SMProfileViewController : SMMainViewController <UIAlertViewDelegate>
 
 @end

@@ -12,7 +12,7 @@
 
 @protocol SMLogInViewControllerDelegate;
 
-@interface SMLogInViewController : UIViewController <SMKeyboardHandlerDelegate, UITextFieldDelegate, UIAlertViewDelegate>
+@interface SMLogInViewController : UIViewController <SMKeyboardHandlerDelegate, UITextFieldDelegate>
 
 @property (nonatomic,weak) id <SMLogInViewControllerDelegate> delegate;
 

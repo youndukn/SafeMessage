@@ -11,10 +11,13 @@
 @interface SMUtility : NSObject
 
 //Color
-+ (UIColor *)submitColor;
-+ (UIColor *)submitPColor;
-+ (UIColor *)changeColor;
-+ (UIColor *)changePColor;
++ (UIColor *)gBackgroundColor;
++ (UIColor *)gMainColor;
++ (UIColor *)gTitleColor;
++ (UIColor *)gSubmitColor;
++ (UIColor *)gSubmitPColor;
++ (UIColor *)gChangeColor;
++ (UIColor *)gChangePColor;
 + (UIImage *)imageWithColor:(UIColor *)color;
 
 //SafeNumber
@@ -22,7 +25,6 @@
 + (NSNumber *)getSafeNumber;
 
 //Utility
-+ (int)getStartSafeNumber:(int)numberOfUsers;
 + (NSArray *)getFramesWithColumns:(int)columns Row:(int)rows
              Width:(float)width Height:(float)height
             SideRL:(float)sideRL MiddleRL:(float)middleRL

@@ -17,18 +17,10 @@
 #import "SMUtility.h"
 
 @interface SMProfileViewController ()
-
-@property (nonatomic, strong) UIButton *myNumberButton;
 @end
 
 @implementation SMProfileViewController
 
-@synthesize myNumberButton;
-
-const float sideInset = 10.0f;
-const float topInset = 40.0f;
-const float fieldHeight = 60.0f;
-const float buttonHeight = 40.0f;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,20 +34,33 @@ const float buttonHeight = 40.0f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    //Set Navigation Items
+    self.navigationItem.title = @"SETTING";
+    
+    //LoginButton
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logOut)];
+    self.navigationItem.rightBarButtonItem = barButton;
+    
+    [safeNumberField setText:[[PFUser currentUser] username]];
+    
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    //Change Button
-    NSString *myNumberString = @"번호 바꾸기:";
+- (void)setMyMessages{
+    NSArray *myMessages = [[PFUser currentUser] objectForKey:kSMUserFixedMessagesKey];
     
-    if([[SMUtility getSafeNumber] stringValue]){
-        [myNumberString stringByAppendingString:[[SMUtility getSafeNumber] stringValue]];
+}
+
+- (void)logOut{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Logout?" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Logout",nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if([alertView.title isEqualToString:@"Logout?"]){
+        
     }
-    
-    [self setMySafeNumber:myNumberString];
 }
-
 
 
 - (void)didReceiveMemoryWarning
@@ -64,26 +69,8 @@ const float buttonHeight = 40.0f;
     // Dispose of any resources that can be recreated.
 }
 
-
-- (void)setMySafeNumber:(NSString *)numberString{
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    
-    if(!myNumberButton){
-        
-        myNumberButton = [[UIButton alloc] initWithFrame:CGRectMake(sideInset, topInset*2+fieldHeight+topInset/2+topInset+5, screenRect.size.width-sideInset*2, buttonHeight)];
-        
-        [myNumberButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        
-        [myNumberButton setBackgroundColor:[SMUtility changeColor]];
-        [myNumberButton addTarget:self action:@selector(createOrEditChannel) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:myNumberButton];
-    }
-    
-    [myNumberButton setTitle:numberString forState:UIControlStateNormal];
-}
-
-
 /*
+ 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

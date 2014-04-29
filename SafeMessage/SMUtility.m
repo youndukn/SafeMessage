@@ -15,19 +15,31 @@
 @implementation SMUtility
 
 //Color
-+ (UIColor *)submitColor{
++ (UIColor *)gBackgroundColor{
+    return [UIColor colorWithRed:3/255.0f green:7/255.0f blue:47/255.0f alpha:1];
+}
+
++ (UIColor *)gMainColor{
+    return [UIColor colorWithRed:205/255.0f green:157/255.0f blue:24/255.0f alpha:1];
+}
+
++ (UIColor *)gTitleColor{
+    return [UIColor colorWithRed:208/255.0f green:208/255.0f blue:208/255.0f alpha:1];
+}
+
++ (UIColor *)gSubmitColor{
     return [UIColor colorWithRed:112/255.0f  green:204/255.0f blue:131/255.0f alpha:1];
 }
 
-+ (UIColor *)submitPColor{
++ (UIColor *)gSubmitPColor{
     return [UIColor colorWithRed:112/255.0f/1.3f  green:204/255.0f/1.3f blue:131/255.0f/1.3f alpha:1];
 }
 
-+ (UIColor *)changeColor{
++ (UIColor *)gChangeColor{
     return [UIColor colorWithRed:246/255.0f  green:141/255.0f blue:93/255.0f alpha:1];
 }
 
-+ (UIColor *)changePColor{
++ (UIColor *)gChangePColor{
     return [UIColor colorWithRed:246/255.0f/1.3f   green:141/255.0f/1.3f  blue:93/255.0f/1.3f  alpha:1];
 }
 
@@ -53,22 +65,6 @@
         return[[PFInstallation currentInstallation].channels objectAtIndex:0];
     }
     return nil;
-}
-
-+ (NSNumber *)getSafeNumber{
-    NSNumber *mySafeNumber = [[PFUser currentUser] valueForKey:kSMUserSafeNumberKey];
-    if(mySafeNumber)
-        return mySafeNumber;
-    return nil;
-}
-
-//Logic Error
-+ (int)getStartSafeNumber:(int)numberOfUsers{
-    int i=1;
-    do {
-        i*=10;
-    } while (numberOfUsers/i*(1.0f/(1.0f-fSMSafeNumberEmptyPercent))>=10.0f);
-    return i;
 }
 
 + (NSArray *)getFramesWithColumns:(int)columns Row:(int)rows

@@ -10,34 +10,42 @@
 
 @interface SMConstants : NSObject
 
-#pragma mark - Safe Number
+#pragma mark - Inset Numbers
 
-//Maximum of the preimium Number
-extern int const iSMMaxPremiumNumber;
-//Percent Decider
-extern float const fSMSafeNumberEmptyPercent;
+extern float const sideInset;
+extern float const topInset;
+extern float const fieldHeight;
+
+#pragma mark - Safe Number
+extern int const iSMPremiumLength;
 
 #pragma mark - User Class
+extern NSString *const kSMUserClassKey;
 
 extern NSString *const kSMUserUsernameKey;
-extern NSString *const kSMUserSafeNumberKey;
+extern NSString *const kSMUserFriendsKey;
+extern NSString *const kSMUserFriendsCategoryKey;
 extern NSString *const kSMUserFixedMessagesKey;
 
-#pragma mark - FixedMessages Class
+#pragma mark - Users Relation
+extern NSString *const kSMRelationUserClassKey;
 
+extern NSString *const kSMRelationUserFromUserKey;
+extern NSString *const kSMRelationUserToUserKey;
+extern NSString *const kSMRelationUserCategoryKey;
+
+extern NSString *const kSMRelationUserCategoryNoneValue;
+
+#pragma mark - FixedMessages Class
 extern NSString *const kSMFixedMessagesClassKey;
 extern NSString *const kSMFixedMessagesUserKey;
 
 #pragma mark - Installation Class
-
 extern NSString *const kSMInstallationChannelsKey;
 
 #pragma mark - Notifications
 
-extern NSString *const kSMLoginConrollerUsernameFoundNotification;
-
 #pragma mark - NSUserDefault
-
 extern NSString *const kSMNSUserDefaultPreviousUserKey;
 
 
